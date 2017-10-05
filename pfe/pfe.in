@@ -1,0 +1,20 @@
+set basis  jun-cc-pVDZ
+molecule {
+0 1
+   F       -1.48940       -1.14230        0.00520
+   C       -0.84070        0.00000        0.48640
+   C        0.61310        0.00000        0.00950
+   F        0.64500        0.00000       -1.38910
+   F        1.26170        1.14230        0.49080
+   F        1.26170       -1.14230        0.49080
+   F       -1.48940        1.14230        0.00520
+   H       -0.86560        0.00000        1.57620
+}
+#auto_fragments('')
+set df_basis_scf 6-311gs
+set freeze_core True
+set cubeprop_tasks ['esp']
+#set cubic_grid_overage [10,10,10]
+E, wfn = energy('scf', return_wfn=True)
+cubeprop(wfn)
+

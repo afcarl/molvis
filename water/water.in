@@ -1,0 +1,18 @@
+molecule h2o {
+0 1
+O
+H 1 1.0
+H 1 1.0 2 104.5
+}
+
+set basis cc-pvdz
+set scf_type df
+set freeze_core True
+
+set df_basis_scf 6-311gs
+set freeze_core True
+set cubeprop_tasks ['esp']
+#set cubic_grid_overage [10,10,10]
+E, wfn = energy('b3lyp', return_wfn=True)
+cubeprop(wfn)
+

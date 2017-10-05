@@ -1,0 +1,16 @@
+molecule {
+0 1
+   F       -1.08902        0.23444        0.00000
+   C        0.00000       -0.57031        0.00000
+   F        1.08902        0.23444        0.00000
+   H        0.00000       -1.18488        0.90246
+   H        0.00000       -1.18488       -0.90246
+}
+set basis cc-pvdz
+#set df_basis_scf 6-311gs
+set freeze_core True
+set cubeprop_tasks ['esp']
+#set cubic_grid_overage [4,4,4]
+set cubic_grid_spacing [0.1,0.1,0.1]
+E, wfn = energy('scf', return_wfn=True)
+cubeprop(wfn)
